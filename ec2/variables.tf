@@ -4,7 +4,7 @@ variable "ami" {
 }
 
 variable "instance_type" {
-  type    = string
+  type = string
 }
 
 variable "ec2_name" {

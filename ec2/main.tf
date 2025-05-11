@@ -3,25 +3,25 @@ locals {
 }
 
 resource "aws_security_group" "net-sg" {
-  name = "net-sg"
+  name   = "net-sg"
   vpc_id = var.vpc_id
 }
 
-resource "aws_vpc_security_group_ingress_rule" "net-sg-ingress" { 
-  for_each = toset(local.ingress_ports)
+resource "aws_vpc_security_group_ingress_rule" "net-sg-ingress" {
+  for_each          = toset(local.ingress_ports)
   security_group_id = aws_security_group.net-sg.id
-  from_port = each.value
-  to_port = each.value
-  ip_protocol = "tcp"
-  cidr_ipv4 = "0.0.0.0/0"
+  from_port         = each.value
+  to_port           = each.value
+  ip_protocol       = "tcp"
+  cidr_ipv4         = "0.0.0.0/0"
 }
 
 resource "aws_vpc_security_group_egress_rule" "net-sg-egress" {
-  from_port = 0
-  to_port = 0
+  from_port         = 0
+  to_port           = 0
   security_group_id = aws_security_group.net-sg.id
-  cidr_ipv4 = "0.0.0.0/0"
-  ip_protocol = "tcp"
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "tcp"
 }
 
 resource "aws_instance" "net-ec2" {
