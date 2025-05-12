@@ -3,7 +3,7 @@ locals {
 }
 
 resource "aws_security_group" "net-sg" {
-  name   = "net-sg"
+  name   = var.sg-name
   vpc_id = var.vpc_id
 }
 

@@ -10,3 +10,12 @@ variable "instance_type" {
 variable "ami" {
   type = string
 }
+
+variable "netflix-sg-name" {
+  type = string
+}
+
+variable "monitoring-sg-name" {
+  type = string
+}
+

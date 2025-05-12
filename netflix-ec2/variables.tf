@@ -21,3 +21,7 @@ variable "vpc_id" {
   type        = string
   description = "VPC ID from the VPC module"
 }
+
+variable "sg-name" {
+  type = string
+}
