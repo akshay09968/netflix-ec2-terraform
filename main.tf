@@ -11,6 +11,7 @@ module "netflix-ec2" {
   vpc_id        = module.vpc.vpc_id
   sg-name       = var.netflix-sg-name
   ec2_name      = "netflix-ec2"
+  key_name      = var.key_name
 }
 
 module "monitoring-ec2" {
@@ -21,4 +22,5 @@ module "monitoring-ec2" {
   vpc_id        = module.vpc.vpc_id
   sg-name       = var.monitoring-sg-name
   ec2_name      = "monitoring-ec2"
+  key_name      = var.key_name
 }
