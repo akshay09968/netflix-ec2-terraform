@@ -5,6 +5,10 @@ locals {
 resource "aws_security_group" "net-sg" {
   name   = var.sg-name
   vpc_id = var.vpc_id
+
+  tags = {
+    Name = var.sg-name
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "net-sg-ingress" {
@@ -25,8 +29,10 @@ resource "aws_vpc_security_group_egress_rule" "net-sg-egress" {
 }
 
 resource "aws_instance" "net-ec2" {
-  ami           = var.ami
-  instance_type = var.instance_type
+  ami                    = var.ami
+  instance_type          = var.instance_type
+  subnet_id              = var.subnet_ids[0]
+  vpc_security_group_ids = [aws_security_group.net-sg.id]
 
   tags = {
     Name = var.ec2_name
